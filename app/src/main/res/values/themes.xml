@@ -1,0 +1,38 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Notes" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:colorPrimary">@color/background</item>
+        <item name="android:colorPrimaryDark">@color/background</item>
+    </style>
+
+    <style name="Theme.Notes" parent="Base.Theme.Notes" />
+
+    <style name="editLayout">
+        <item name="boxCornerRadiusTopStart">20dp</item>
+        <item name="boxCornerRadiusTopEnd">20dp</item>
+        <item name="boxCornerRadiusBottomStart">20dp</item>
+        <item name="boxCornerRadiusBottomEnd">20dp</item>
+        <item name="boxStrokeWidth">3dp</item>
+        <item name="boxStrokeWidthFocused">3dp</item>
+        <item name="boxStrokeColor">@color/text</item>
+        <item name="cursorColor">@color/text</item>
+        <item name="hintTextColor">@color/text</item>
+        <item name="android:textColorHint">@color/text_opacity_60</item>
+    </style>
+
+    <style name="button">
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:foregroundGravity">center</item>
+        <item name="layout_constraintVertical_bias">0.3</item>
+        <item name="backgroundTint">@color/background</item>
+        <item name="rippleColor">@color/button_ripple</item>
+    </style>
+
+    <style name="parentConstraintLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/background</item>
+    </style>
+
+</resources>

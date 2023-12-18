@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Заметки</string>
+    <string name="error">Длина заголовка не должна превышать 15 символов!</string>
+    <string name="header">Заголовок:</string>
+    <string name="main_text">Основной текст:</string>
+    <string name="fragment_message_1">Вы уверены, что хотите удалить заметку\u0020</string>
+    <string name="fragment_message_2">\?</string>
+    <string name="fragment_bCancel">Нет</string>
+    <string name="fragment_bDelete">Да</string>
+
+</resources>

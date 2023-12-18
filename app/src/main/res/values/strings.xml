@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Notes</string>
+    <string name="error">The length of the title must be less than 15 characters!</string>
+    <string name="header">Title:</string>
+    <string name="main_text">Main text:</string>
+    <string name="fragment_message_1">Are you sure you want to delete\u0020</string>
+    <string name="fragment_message_2">\u0020note?</string>
+    <string name="fragment_bCancel">No</string>
+    <string name="fragment_bDelete">Yes</string>
+
+</resources>
