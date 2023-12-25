@@ -8,6 +8,7 @@ import android.view.View
 import androidx.core.widget.addTextChangedListener
 import com.cyllxapk.notes.Keys
 import com.cyllxapk.notes.R
+import com.cyllxapk.notes.ResultCodes
 import com.cyllxapk.notes.databinding.ActivityEditBinding
 
 class EditActivity : AppCompatActivity() {
@@ -21,26 +22,29 @@ class EditActivity : AppCompatActivity() {
         setContentView(editView.root)
         this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
-        if (!intent.getStringExtra(Keys.TITLE_TEXT_KEY).isNullOrEmpty()) {
+        if (!intent.getStringExtra(Keys.TITLE_TEXT.key).isNullOrEmpty()) {
+
             isEditInstance = true
-            editView.titleText.text!!.append(intent.getStringExtra(Keys.TITLE_TEXT_KEY))
-            editView.noteText.text!!.append(intent.getStringExtra(Keys.NOTE_TEXT_KEY))
+            editView.titleText.text!!.append(intent.getStringExtra(Keys.TITLE_TEXT.key))
+            editView.noteText.text!!.append(intent.getStringExtra(Keys.NOTE_TEXT.key))
+
         }
 
         editView.titleText.addTextChangedListener {
+
             if (editView.titleText.text?.length!! > 14) editView.textInputLayout2.error = getString(R.string.error)
             else editView.textInputLayout2.isErrorEnabled = false
+
         }
     }
 
     fun onClickDone(view: View) {
         if (editView.titleText.text?.isNotEmpty() == true && editView.titleText.text?.length!! <= 14) {
-            intent.putExtra(Keys.TITLE_TEXT_KEY, editView.titleText.text.toString())
-            intent.putExtra(Keys.NOTE_TEXT_KEY, editView.noteText.text.toString())
+            intent.putExtra(Keys.TITLE_TEXT.key, editView.titleText.text.toString())
+            intent.putExtra(Keys.NOTE_TEXT.key, editView.noteText.text.toString())
 
-            if (isEditInstance) {
-                setResult(Keys.RESULT_EDITED, intent)
-            } else setResult(RESULT_OK, intent)
+            if (isEditInstance) setResult(ResultCodes.RESULT_EDITED.value, intent)
+            else setResult(RESULT_OK, intent)
 
             finish()
         }

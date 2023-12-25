@@ -14,6 +14,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.cyllxapk.notes.Keys
 import com.cyllxapk.notes.R
+import com.cyllxapk.notes.ResultCodes
 import com.cyllxapk.notes.adapter.Note
 import com.cyllxapk.notes.adapter.NoteAdapter
 import com.cyllxapk.notes.databinding.ActivityMainBinding
@@ -42,17 +43,17 @@ class MainActivity : AppCompatActivity(), NoteAdapter.OnClick {
         }
 
         editLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-            if (result.resultCode == Keys.RESULT_EDITED) {
+            if (result.resultCode == ResultCodes.RESULT_EDITED.value) {
                 adapter.editNote(
-                    newTitleText = result.data?.getStringExtra(Keys.TITLE_TEXT_KEY)!!,
-                    newNoteText = result.data?.getStringExtra(Keys.NOTE_TEXT_KEY)!!,
-                    position = result.data?.getIntExtra(Keys.POSITION_KEY, -1)!!
+                    newTitleText = result.data?.getStringExtra(Keys.TITLE_TEXT.key)!!,
+                    newNoteText = result.data?.getStringExtra(Keys.NOTE_TEXT.key)!!,
+                    position = result.data?.getIntExtra(Keys.POSITION.key, -1)!!
                 )
             } else if (result.resultCode == RESULT_OK) {
                 adapter.addNote(
                     Note(
-                        titleText = result.data?.getStringExtra(Keys.TITLE_TEXT_KEY)!!,
-                        noteText = result.data?.getStringExtra(Keys.NOTE_TEXT_KEY)!!
+                        titleText = result.data?.getStringExtra(Keys.TITLE_TEXT.key)!!,
+                        noteText = result.data?.getStringExtra(Keys.NOTE_TEXT.key)!!
                     )
                 )
             }
@@ -80,8 +81,8 @@ class MainActivity : AppCompatActivity(), NoteAdapter.OnClick {
 
     override fun open(note: Note) {
         val intent = Intent(this, NoteActivity::class.java)
-        intent.putExtra(Keys.TITLE_TEXT_KEY, note.titleText)
-        intent.putExtra(Keys.NOTE_TEXT_KEY, note.noteText)
+        intent.putExtra(Keys.TITLE_TEXT.key, note.titleText)
+        intent.putExtra(Keys.NOTE_TEXT.key, note.noteText)
 
         startActivity(intent)
     }
@@ -90,9 +91,9 @@ class MainActivity : AppCompatActivity(), NoteAdapter.OnClick {
         val position = adapter.noteList.indexOfFirst { it == note }
 
         val intent = Intent(this, EditActivity::class.java)
-        intent.putExtra(Keys.TITLE_TEXT_KEY, note.titleText)
-        intent.putExtra(Keys.NOTE_TEXT_KEY, note.noteText)
-        intent.putExtra(Keys.POSITION_KEY, position)
+        intent.putExtra(Keys.TITLE_TEXT.key, note.titleText)
+        intent.putExtra(Keys.NOTE_TEXT.key, note.noteText)
+        intent.putExtra(Keys.POSITION.key, position)
 
         editLauncher.launch(intent)
     }

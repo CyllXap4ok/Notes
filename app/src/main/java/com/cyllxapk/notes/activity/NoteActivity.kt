@@ -12,8 +12,8 @@ class NoteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         noteView = ActivityNoteBinding.inflate(layoutInflater)
         setContentView(noteView.root)
-        val titleText = "\"${intent.getStringExtra(Keys.TITLE_TEXT_KEY)}\""
+        val titleText = "\"${intent.getStringExtra(Keys.TITLE_TEXT.key)}\""
         noteView.titleTextView.text = titleText
-        noteView.noteTextView.text = intent.getStringExtra(Keys.NOTE_TEXT_KEY)
+        noteView.noteTextView.text = intent.getStringExtra(Keys.NOTE_TEXT.key)
     }
 }
